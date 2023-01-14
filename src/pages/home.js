@@ -5,7 +5,7 @@ import { fetchProducts } from '../store/productSlice';
 
 const Home = () => {
     // const [products, setProducts] = useState([]);
-    const { data: products, status } = useSelector(state => state.product);
+    const { data: products } = useSelector(state => state.product);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchProducts());
@@ -25,7 +25,7 @@ const Home = () => {
         <div className='home'>
             <h2 className='heading'>Welcome to Redux Store</h2>
             <div className='products'>
-                {products.length > 0 ? products[0].map(product => (
+                {products.length > 0 ? products.map(product => (
                     <div key={product.id} className="product">
                         <img src={product.image} alt="" />
                         <h4>{product.title}</h4>
